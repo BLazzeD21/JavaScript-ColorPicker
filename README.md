@@ -1,0 +1,1 @@
+find rgba from picture
