@@ -1,1 +1,1 @@
-# Find rgba from picture
+# Find RGBA color model from picture
