@@ -1,1 +1,1 @@
-find rgba from picture
+# Find rgba from picture
