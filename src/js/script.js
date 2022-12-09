@@ -6,17 +6,24 @@ const allPixels = document.getElementById('all-pixels');
 
 img.crossOrigin = '';
 
-document.querySelector("#btn").onclick = function(){
+
+const loadImg = () => {
     let imgInput = document.getElementById('link-img').value;
     img.src = imgInput;
-}
-const ctx = canvas.getContext('2d');
-img.addEventListener('load', () => {
+    ctx.globalAlpha = rng.value;
     canvas.width = img.width;
     canvas.height = img.height;
-    ctx.drawImage(img, 0, 0);
-    img.style.display = 'none';
-});
+    ctx.globalAlpha = rng.value;
+    ctx.drawImage(img, 0, 0); 
+}
+
+document.querySelector("#btn").onclick = function(){
+    loadImg();
+}
+
+const ctx = canvas.getContext('2d');
+
+
 
 function pick(event, destination) {
     let PixelCounter = 0;
@@ -35,6 +42,7 @@ function pick(event, destination) {
             }
         }
     }
+    
     console.log(`${PixelCounter}px - rgba(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255})`);
 
     allPixels.innerHTML = `Pixels on image: ${canvas.width * canvas.height}`;
@@ -49,3 +57,11 @@ function pick(event, destination) {
 }
 
 canvas.addEventListener('click', event => pick(event, selectedColor));
+
+
+const rng = document.getElementById('rangeinput');
+
+rng.oninput = function () {
+    loadImg();
+}
+
